@@ -1,0 +1,55 @@
+﻿@model WebApp.Models.UserModel
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> locOptions
+@{
+    ViewData["Title"] = Localizer["Home Page"];
+}
+<!DOCTYPE html>
+<html >
+<head>
+    
+   
+    <title>@ViewData["Title"] - WebApp</title>
+    <link rel="stylesheet" href="~/css/LoginView.css" />
+
+</head>
+<div class="login-box">
+  <h2>@Localizer["Login"]</h2>
+ @* <form>*@
+  <form asp-action="Login" , asp-controller="Account">
+@* <div asp-validation-summary="ModelOnly" class="text-danger">
+*@ @*    <div class="form-group">
+                                    <label asp-for="UserName"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                    <input asp-for="UserName" type="text" name="UserName" id="UserName" placeholder="Your email address" />
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>*@
+    <div class="user-box">
+      <input asp-for="UserName" type="text" name="UserName"  placeholder="Your email address" required="">
+       <span asp-validation-for="UserName" class="text-danger"></span>
+      <label>@Localizer["Email"]</label>
+    </div>
+    <div class="user-box">
+      <input asp-for="Password" type="Password" name="Password" id="Password" placeholder="Your Password" required="">
+       <span asp-validation-for="Password" class="text-danger"></span>
+      <label>@Localizer["Password"]</label>
+    </div>
+    <div class="parent">
+             <a href="@Url.Action("SignUpView", "Account")" class="child">@Localizer["Create an account"]</a>
+
+              <a href="@Url.Action("Login", "Account")" class="child">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+     @Localizer["Submit"]
+    </a>
+    </div>
+                                
+   
+</form>
+</div>

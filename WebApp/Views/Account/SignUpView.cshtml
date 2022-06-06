@@ -1,0 +1,85 @@
+﻿@model WebApp.Models.SignUpModel
+@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> locOptions
+<
+   !DOCTYPE html>
+<html >
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebApp</title>
+    <link rel="stylesheet" href="~/css/LoginView.css" />
+
+</head>
+<div class="login-box" style="height:80% " >
+  <h2>@Localizer["Sign Up"]</h2>
+  
+
+
+  <form asp-action="SignUp" asp-controller="Account" >
+  <div class="parent">
+          <div  class="user-box" id="child">
+      <input asp-for="UserName" type="text" name="UserName"  placeholder="Email" required="">
+       <span asp-validation-for="UserName" class="text-danger"></span>
+      <label>@Localizer["Email"]</label>
+    </div>
+     <div class="user-box" id="child" >
+      <input asp-for="PhoneNumber" type="tel" name="PhoneNumber"  placeholder="Phone Number" required="">
+       <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+      <label>@Localizer["Phone Number"]</label>
+    </div>
+       
+
+  </div>
+  
+ 
+   <div class="parent">
+       <div class="user-box"  id="child">
+      <input asp-for="FirstName" type="text" name="FirstName"  placeholder="First Name" required="">
+       <span asp-validation-for="FirstName" class="text-danger"></span>
+      <label>@Localizer["First Name"]</label>
+    </div>
+         <div class="user-box" id="child" >
+      <input asp-for="LastName" type="text" name="LastName"  placeholder="Last Name" required="">
+       <span asp-validation-for="LastName" class="text-danger"></span>
+      <label>@Localizer["Last Name"]</label>
+    </div>
+    
+   </div>
+   
+   <div class="parent">
+         <div class="user-box" id="child">
+      <input asp-for="Password" type="Password" name="Password" id="Password" placeholder="Password" required="">
+       <span asp-validation-for="Password" class="text-danger"></span>
+      <label>@Localizer["Password"]</label>
+    </div>
+     <div class="user-box" id="child" >
+      <input asp-for="Passwordconfirmation" type="password" name="Passwordconfirmation"  placeholder="Your email address" required="">
+       <span asp-validation-for="Passwordconfirmation" class="text-danger"></span>
+      <label>@Localizer["Password Confirmation"]</label>
+    </div>
+   </div>
+  
+      <div class="parent">
+             <a href="@Url.Action("SignUpView", "Account")" class="child">@Localizer["Create an account"]</a>
+            
+              <a href="@Url.Action("Login", "Account")" class="child">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+     @Localizer["Submit"]
+    </a>
+    </div>
+   
+                               
+
+   
+  </form>
+  
+</div>
