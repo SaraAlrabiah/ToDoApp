@@ -11,8 +11,8 @@ namespace ApplicationLayer.Application
     {
 
 
-        //public string GetRole(User userModel);
-        //public string UserStatus(User userModel);
+        public string GetRole(User userModel);
+        public string UserStatus(User userModel);
         public int SignUp(User userModel);
 
         public int UserExistence(User user);

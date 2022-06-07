@@ -11,7 +11,7 @@ namespace WebApp.Controllers
     public class AccountController : Controller
     {
         private readonly IConfiguration _configration;
-       // private readonly ITokenService _tokenService;
+      private readonly ITokenService _tokenService;
 
         private string generatedToken = null;
 
@@ -23,9 +23,10 @@ namespace WebApp.Controllers
         //    _tokenService = tokenService;
 
         //}
-        public AccountController(IConfiguration config)
+        public AccountController(IConfiguration config , ITokenService tokenService)
         {
             _configration = config;
+            _tokenService = tokenService;
 
         }
         public IActionResult LoginView()
@@ -45,7 +46,7 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 string role = null;
-              //  var validUser = new UserInfo();
+               var validUser = new UserInfo();
                 var user = new UserModel
                 {
                     UserName = userModel.UserName,
@@ -72,37 +73,37 @@ namespace WebApp.Controllers
                     if (responseMessage.IsSuccessStatusCode)
                     {
                         role = await responseMessage.Content.ReadAsStringAsync();
-                        return RedirectToAction("LoginView");
-                        //if (role != "")
-                        //{
+                    
+                        if (role != "")
+                        {
 
-                        //    var username = user.UserName;
-                        //    validUser = new UserInfo()
-                        //    {
-                        //        Role = role,
-                        //        UserName = userModel.UserName,
-                        //        Password = userModel.Password
-                        //    };
+                            var username = user.UserName;
+                            validUser = new UserInfo()
+                            {
+                                Role = role,
+                                UserName = userModel.UserName,
+                                Password = userModel.Password
+                            };
 
-                        //    generatedToken = _tokenService.BuildToken(_configration["Jwt:Key"].ToString(), _configration["Jwt:Issuer"].ToString(),
-                        //    validUser);
+                            generatedToken = _tokenService.BuildToken( 
+                            validUser);
 
-                        //    if (generatedToken != null)
-                        //    {
+                            if (generatedToken != null)
+                            {
 
-                        //        HttpContext.Session.SetString("Token", generatedToken);
-                        //        HttpContext.Session.SetString("username", username);
-                        //        var usernameis = HttpContext.Session.GetInt32(username);
+                                HttpContext.Session.SetString("Token", generatedToken);
+                                HttpContext.Session.SetString("username", username);
+                                var usernameis = HttpContext.Session.GetInt32(username);
 
-                        //        return RedirectToAction("dashboard");
-                        //    }
-                        //}
-                        //else
-                        //{
+                                return RedirectToAction("MainPage");
+                            }
+                        }
+                        else
+                        {
 
-                        //    ModelState.AddModelError("", "You Email or password not correct");
-                        //    return View("LoginView");
-                        //}
+                            ModelState.AddModelError("", "You Email or password not correct");
+                            return View("LoginView");
+                        }
                     }
                 }
 
@@ -112,28 +113,34 @@ namespace WebApp.Controllers
         }
 
 
-        //// [Authorize(Roles = "Employee, Client")]
-        //[Route("dashboard")]
-        //[HttpGet]
-        //public IActionResult dashboard()
-        //{
-        //    string token = HttpContext.Session.GetString("Token");
-        //    string username = HttpContext.Session.GetString("username");
+       // [Authorize(Roles = "Admin , Maintenance Manager  ,Employee,Maintenance Worker, Building Manager ")]
+       // [Route("dashboard")]
+        [HttpGet]
+        public IActionResult MainPage()
+        {
+            try
+            {
+                string token = HttpContext.Session.GetString("Token");
+                string username = HttpContext.Session.GetString("username");
 
-        //    if (token == null)
-        //    {
-        //        return (RedirectToAction("Login"));
-        //    }
+                if (token == null)
+                {
+                    return (RedirectToAction("Login"));
+                }
 
-        //    if (!_tokenService.IsTokenValid(_configration["Jwt:Key"].ToString(),
-        //        _configration["Jwt:Issuer"].ToString(), token))
-        //    {
-        //        return (RedirectToAction("Login"));
-        //    }
-        //    //  ViewBag.BaseMvcUrl = BaseMvcUrl;
-        //    return View();
+                if (!_tokenService.IsTokenValid( token))
+                {
+                    return (RedirectToAction("Login"));
+                }
+              
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return View();
 
-        //}
+        }
 
 
 
@@ -161,7 +168,7 @@ namespace WebApp.Controllers
 
 
                 };
-                var validUser = new SignUpModel();
+                var validUser = new UserInfo();
                 IActionResult response1 = Unauthorized();
                 using (var client = new HttpClient())
                 {
@@ -185,25 +192,24 @@ namespace WebApp.Controllers
                         {
 
                             var username = user.UserName;
-                            //validUser = new UserModel()
-                            //{
-                            //    Role = "Client",
-                            //    UserName = userModel.UserName,
-                            //    Password = userModel.Password
-                            //};
+                            validUser = new UserInfo()
+                            {
+                                Role = "Client",
+                                UserName = userModel.UserName,
+                                Password = userModel.Password
+                            };
 
-                            //generatedToken = _tokenService.BuildToken(_configration["Jwt:Key"].ToString(), _configration["Jwt:Issuer"].ToString(),
-                            //validUser);
+                            generatedToken = _tokenService.BuildToken(validUser);
 
-                            //if (generatedToken != null)
-                            //{
+                            if (generatedToken != null)
+                            {
 
-                            //    HttpContext.Session.SetString("Token", generatedToken);
-                            //    HttpContext.Session.SetString("username", username);
-                            //    var usernameis = HttpContext.Session.GetInt32(username);
+                                HttpContext.Session.SetString("Token", generatedToken);
+                                HttpContext.Session.SetString("username", username);
+                                var usernameis = HttpContext.Session.GetInt32(username);
 
-                            //    return RedirectToAction("dashboard");
-                            //}
+                                return RedirectToAction("dashboard");
+                            }
                         }
                         else
                         {
@@ -227,14 +233,14 @@ namespace WebApp.Controllers
             return View();
         }
 
-        //[Authorize]
-        //[Route("Logout")]
-        //[HttpGet]
-        //public IActionResult Logout()
-        //{
+        [Authorize]
+       // [Route("Logout")]
+        [HttpGet]
+        public IActionResult Logout()
+        {
 
-        //    HttpContext.Session.Clear();
-        //    return View("LoginView");
-        //}
+            HttpContext.Session.Clear();
+            return View("LoginView");
+        }
     }
 }

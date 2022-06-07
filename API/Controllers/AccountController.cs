@@ -23,22 +23,7 @@ namespace API.Controllers
 
 
 
-        //[HttpPost("api/values/GetCurrentUserRole")]
-        //// [Route("api/values/GetCurrentUserRole")]
-        //public async Task<IActionResult> GetCurrentUserRole([FromBody] User userModelDto)
-        //{
-        //    if (userModelDto == null)
-        //    {
-        //        return Ok(0);
-        //    }
-        //    else
-        //    {
-        //        string newUserStatus = _user.UserStatus(userModelDto);
-        //        string userRole = _user.GetRole(userModelDto);
-        //        return Ok(userRole);
-        //    }
-
-        //}
+        
         [HttpPost]
         [Route("api/values/UserSignUp")]
         public async Task<IActionResult> UserSignUp([FromBody] User userSignUp)
@@ -70,9 +55,14 @@ namespace API.Controllers
             }
             else
             {
-                //string newUserStatus = IUserManager.UserStatus(userModelDto);
-                //string userRole = IUserManager.GetRole(userModelDto);
-                return Ok();
+                string newUserStatus;
+
+                User user = new User();
+
+
+            newUserStatus = _user.UserStatus(userModelDto);
+               string userRole = _user.GetRole(userModelDto);
+                return Ok(userRole);
             }
 
         }

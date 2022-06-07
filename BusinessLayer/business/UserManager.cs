@@ -1,6 +1,7 @@
 ﻿using ApplicationLayer.Application;
 using DataAccess.DbContexts;
 using DataAccess.Model;
+using DataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,40 +37,40 @@ namespace BusinessLayer.business
                 return 0;
             }
         }
-        // public string GetRole(User userModel)
-        //  {
-        //      string role = "";
-        //      var userObj = _db.Users.Where(x => x.Username.ToLower() == userModel.Username.ToLower()
-        //          && x.Password == userModel.Password).FirstOrDefault();
+        public string GetRole(User userModel)
+        {
+            string role = "";
+            var userObj = _db.Users.Where(x => x.Username.ToLower() == userModel.Username.ToLower()
+                && x.Password == userModel.Password).FirstOrDefault();
 
-        //      if (userObj != null)
-        //      {
-        //          var roleObj = _db.Roles.Where(x => x.ID == userObj.RoleID).FirstOrDefault();
-        //          if (roleObj != null)
-        //          {
-        //              //UserRoleDto userInfo = new UserRoleDto()
-        //              //{
-        //              //    UserName = userObj.Username,
-        //              //    Password = userObj.Password,
-        //              //    Role = roleObj.Name
-        //              //};
-        //              //role = userInfo.Role;
-        //          }
-        //          else
-        //          {
-        //              //UserRoleDto userInfo = new UserRoleDto()
-        //              //{
-        //              //    UserName = userObj.Username,
-        //              //    Password = userObj.Password,
-        //              //    Role = string.Empty
-        //              //};
-        //              //role = string.Empty;
-        //          }
+            if (userObj != null)
+            {
+                var roleObj = _db.Roles.Where(x => x.ID == userObj.RoleID).FirstOrDefault();
+                if (roleObj != null)
+                {
+                    UserInfo userInfo = new UserInfo()
+                    {
+                        UserName = userObj.Username,
+                        Password = userObj.Password,
+                        Role = roleObj.Name
+                    };
+                    role = userInfo.Role;
+                }
+                else
+                {
+                    UserInfo userInfo = new UserInfo()
+                    {
+                        UserName = userObj.Username,
+                        Password = userObj.Password,
+                        Role = string.Empty
+                    };
+                    role = string.Empty;
+                }
 
 
-        //      }
-        //      return role;
-        //  }
+            }
+            return role;
+        }
 
 
 
@@ -94,26 +95,26 @@ namespace BusinessLayer.business
 
 
             }
-            //public string UserStatus(User userModel)
-            //{
-            //    string status = "";
-            //    var userObj = _db.Users.Where(x => x.Username.ToLower() == userModel.Username.ToLower()
-            //      && x.Password == userModel.Password).FirstOrDefault();
-            //    if (userObj != null)
-            //    {
-            //        if (userObj.loginStatus == 0)
-            //        {
-            //            status = "new";
+        public  string UserStatus(User userModel)
+        {
+            string status = "";
+            var   userObj = _db.Users.Where(x => x.Username.ToLower() == userModel.Username.ToLower()
+              && x.Password == userModel.Password).FirstOrDefault();
+            if (userObj != null)
+            {
+                if (userObj.loginStatus == 0)
+                {
+                    status = "new";
 
-            //        }
-            //        else
-            //        {
-            //            status = "normal";
-            //        }
-            //    }
+                }
+                else
+                {
+                    status = "normal";
+                }
+            }
 
-            //    return status;
-            //}
+            return status;
         }
+    }
     }
 
