@@ -8,7 +8,7 @@ body {
     font-family: sans-serif;
     background: linear-gradient(#141e30, #243b55);
 }
-.parent {
+#parent {
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
@@ -30,18 +30,18 @@ body {
     border-radius: 10px;
 }
 
-    .login-box h2 {
+    login-box h2 {
         margin: 0 0 30px;
         padding: 0;
         color: #fff;
         text-align: center;
     }
 
-    .login-box .user-box {
+    #login-boxuser-box {
         position: relative;
     }
 
-        .login-box .user-box input {
+        input {
             height: 10%;
             width: 100%;
             padding: 20px 0;
@@ -54,7 +54,7 @@ body {
             background: transparent;
         }
 
-        .login-box .user-box label {
+        label {
             position: absolute;
             top: 0;
             left: 0;
@@ -65,8 +65,8 @@ body {
             transition: .5s;
         }
 
-        .login-box .user-box input:focus ~ label,
-        .login-box .user-box input:valid ~ label {
+        .login-box user-box input:focus ~ label,
+        .login-box user-box input:valid ~ label {
             top: -20px;
             left: 0;
             color: #03e9f4;

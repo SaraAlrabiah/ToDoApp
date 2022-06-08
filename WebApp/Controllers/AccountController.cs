@@ -156,7 +156,7 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                string result = null;
+                string result ;
                 var user = new SignUpModel
                 {
                     UserName = userModel.UserName,
@@ -208,7 +208,7 @@ namespace WebApp.Controllers
                                 HttpContext.Session.SetString("username", username);
                                 var usernameis = HttpContext.Session.GetInt32(username);
 
-                                return RedirectToAction("dashboard");
+                                return RedirectToAction("MainPage");
                             }
                         }
                         else
@@ -222,6 +222,7 @@ namespace WebApp.Controllers
 
 
             }
+            ModelState.AddModelError("", "This Email already used");
             return View("SignUpView");
         }
 

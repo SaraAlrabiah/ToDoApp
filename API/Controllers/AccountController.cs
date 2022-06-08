@@ -42,7 +42,7 @@ namespace API.Controllers
                 else
                 {
                     var SignUpUser = _user.SignUp(userSignUp);
-                    return Ok(SignUpUser);
+                    return Ok(1);
                 }
             }
         }
