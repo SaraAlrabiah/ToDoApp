@@ -1,0 +1,118 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> locOptions
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<body>
+
+
+
+   
+  <section id="logo" class="d-flex align-items-center">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h1>@Localizer["To Do Tasks Application"]</h1>
+          <h2>@Localizer["To Do Tasks Application ia an application of managing and planing to get your goal done"]</h2>
+          <div><a href="#about" class="btn-get-started scrollto">Get Started</a></div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 logo-img">
+                  <a asp-action="WelcomePage" asp-controller="Account" class="logo"><img src="~/images/Task.jpg" alt="" class="img-fluid"></a>
+
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+<main id="main">
+
+   
+    <section id="about" class="about">
+      <div class="container">
+
+          <div class="col-xl-7 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5">
+            <h3>Smart Work Step</h3>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-brain"></i></div>
+              <h4 class="title"><a href="">Think</a></h4>
+              <p class="description">Think deaply to acheive your goal </p>
+            </div>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-calculator"></i></div>
+              <h4 class="title"><a href="">Plan</a></h4>
+              <p class="description">Jutistifay all the step which will let you acheive your goal</p>
+            </div>
+
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-car"></i></div>
+              <h4 class="title"><a href="">Act</a></h4>
+              <p class="description">Start to work on the plan and steps that you already create it.</p>
+            </div>
+
+          </div>
+        </div>
+
+    
+    </section> 
+
+
+ 
+    <section id="services" class="services section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Services</h2>
+          <p>To Do Task Application can serve you via:</p>
+        </div>
+
+        <div class="row">
+    
+                    <div class="col-lg-4 col-md-6">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-calendar4-week" style="color: #ff689b;"></i></div>
+              <h4 class="title"><a href="">Add task</a></h4>
+              <p class="description"></p>
+            </div>
+          </div>
+      <div class="col-lg-4 col-md-6">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-controller" style="color: #e9bf06;"></i></div>
+              <h4 class="title"><a href="">Manage Task task</a></h4>
+              <p class="description"></p>
+            </div>
+          </div>
+           <div class="col-lg-4 col-md-6">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-activity" style="color: #3fcdc7;"></i></div>
+              <h4 class="title"><a href="">Get your task done</a></h4>
+              <p class="description"></p>
+            </div>
+          </div>
+  
+        </div>
+
+      </div>
+    </section> 
+
+  </main>
+
+ 
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+
+</body>
+
+</html>

@@ -117,46 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Electrical" xml:space="preserve">
-    <value>Électrique</value>
+  <data name="Login" xml:space="preserve">
+    <value>تسجيل دخول</value>
   </data>
-  <data name="Electronics" xml:space="preserve">
-    <value>Électronique</value>
+  <data name="SignUp" xml:space="preserve">
+    <value>إنشاء حساب</value>
   </data>
-  <data name="Food" xml:space="preserve">
-    <value>Aliments</value>
-  </data>
-  <data name="Index" xml:space="preserve">
-    <value>Indice</value>
-  </data>
-  <data name="LS-Electrical" xml:space="preserve">
-    <value>LS-Electricité</value>
-  </data>
-  <data name="LS-Electronics" xml:space="preserve">
-    <value>LS-Electronique</value>
-  </data>
-  <data name="LS-Food" xml:space="preserve">
-    <value>LS-Alimentation</value>
-  </data>
-  <data name="MS-Electrical" xml:space="preserve">
-    <value>MS-électrique</value>
-  </data>
-  <data name="MS-Electronics" xml:space="preserve">
-    <value>MS-Electronique</value>
-  </data>
-  <data name="MS-Food" xml:space="preserve">
-    <value>MS-Alimentation</value>
-  </data>
-  <data name="Price is Required" xml:space="preserve">
-    <value>Le prix est requis</value>
-  </data>
-  <data name="TS-Electrical" xml:space="preserve">
-    <value>TS-électrique</value>
-  </data>
-  <data name="TS-Electronics" xml:space="preserve">
-    <value>TS-Electronique</value>
-  </data>
-  <data name="TS-Food" xml:space="preserve">
-    <value>TS-Alimentation</value>
+  <data name="Welocme" xml:space="preserve">
+    <value>مرحبًا</value>
   </data>
 </root>

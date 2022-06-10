@@ -135,10 +135,10 @@
   <data name="Password" xml:space="preserve">
     <value>كلمة المرور</value>
   </data>
-  <data name="Password Confirmation" xml:space="preserve">
+  <data name="Password confirmation" xml:space="preserve">
     <value>توثيق كلمة المرور</value>
   </data>
-  <data name="Phone Number" xml:space="preserve">
+  <data name="Phone" xml:space="preserve">
     <value>رقم الجوال</value>
   </data>
   <data name="Sign Up" xml:space="preserve">

@@ -16,6 +16,7 @@
    
     <title>@ViewData["Title"] - WebApp</title>
       <link rel="stylesheet" href="~/awesome/css/all.css" />
+      <link rel="stylesheet" href="~/css/LoginView.css" />
 
 </head>
 <body>
@@ -26,7 +27,7 @@
         <div class="card text-black" style="border-radius: 25px;">
           <div class="card-body p-md-5">
             <div class="row justify-content-center">
-              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1" >
 
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">@Localizer["Login"]</p>
 
@@ -50,7 +51,7 @@
 
                                               <label class="form-label" asp-for="Password">@Localizer["Password"]</label>
 
-                      <input type="password"asp-for="Password" class="form-control" />
+                      <input type="password"asp-for="Password" class="form-control" placeholder="Your password" />
                <span asp-validation-for="Password" class="text-danger"></span>
 
                     </div>
@@ -61,9 +62,11 @@
              
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <input type="submit"class="btn btn-primary btn-lg" />
+                     
+                                <input type="submit"class="btn btn-submit btn-lg" /></div>
+
                     
-                  </div>
+         
 
                 </form>
 

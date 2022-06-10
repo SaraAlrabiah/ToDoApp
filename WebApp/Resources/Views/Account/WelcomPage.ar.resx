@@ -117,19 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Category Name is Required" xml:space="preserve">
-    <value>Kategoriename ist erforderlich</value>
+  <data name="Login" xml:space="preserve">
+    <value>تسجيل الدخول</value>
   </data>
-  <data name="Manufacturer is Required" xml:space="preserve">
-    <value>Hersteller ist erforderlich</value>
-  </data>
-  <data name="Price is Required" xml:space="preserve">
-    <value>Preis ist erforderlich</value>
-  </data>
-  <data name="Product Id is Required" xml:space="preserve">
-    <value>Produkt-ID ist erforderlich</value>
-  </data>
-  <data name="Product Name is Required" xml:space="preserve">
-    <value>Produktname ist erforderlich</value>
+  <data name="Submit" xml:space="preserve">
+    <value>إرسال</value>
   </data>
 </root>

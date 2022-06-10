@@ -1,4 +1,5 @@
 ﻿using ApplicationLayer.Application;
+using AutoMapper;
 using DataAccess.DbContexts;
 using DataAccess.Model;
 using DataAccess.Models;
@@ -14,12 +15,14 @@ namespace BusinessLayer.business
         public class UserManager : IUserManager
     {
             private readonly AppDbContext _db;
-            //private readonly IUserManager _user;
+        //private readonly IUserManager _user;
+        private IMapper _mapper;
 
-            public UserManager(AppDbContext DB)
+        public UserManager(AppDbContext DB , IMapper mapper)
             {
             this._db = DB;
       //      this._user = user;
+      _mapper = mapper;
             }
 
        
@@ -74,25 +77,45 @@ namespace BusinessLayer.business
 
 
 
-        public int SignUp(User userModel)
+        public string SignUp(User userModel)
             {
-
-                var user = new User
+            var result = ""; 
+            if(userModel.Username != null && userModel.Password != null)
+            {
+                              var user = new User
                 {
-                    FirstName = userModel.FirstName,
-                    LastName = userModel.LastName,
+                 
+                    FirstName = "",
+                    LastName = "",
                     Password = userModel.Password,
                     Phone = userModel.Phone,
                     RoleID = 2,
                     Username = userModel.Username,
+                    loginStatus = 1,
+                    Status = 1,
+                
 
                 };
-                _db.
-                    Users.Add(user);
-            _db.SaveChanges();
-              
-                return 1;
+                var newUser = _mapper.Map<User>(user);
 
+                // hash password
+           //     user.Password = BCrypt.HashPassword(user.Password);
+
+                // save user
+                _db.Users.Add(user);
+                _db.SaveChanges();
+             //   _db. Users.Add(user);
+              
+                result = "1";
+                
+            }
+            else
+            {
+               result = "0";
+            }
+          //  _db.Save();
+          //  _db.SaveChanges();
+            return result;
 
             }
         public  string UserStatus(User userModel)

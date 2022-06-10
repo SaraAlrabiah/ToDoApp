@@ -11,6 +11,7 @@ namespace DataAccess.Model
     public class User
     {
         [Key]
+        [Column (Order =0)]
         public int ID { get; set; }
         [Required(ErrorMessage = "First name is required")]
         [DataType(DataType.Text)]
@@ -27,18 +28,19 @@ namespace DataAccess.Model
     
         public string Username { get; set; }
         [Required(ErrorMessage = "Your phoneNumber is required")]
-        [DataType(DataType.PhoneNumber)]
+        [DataType(DataType.Text)]
         [Display(Name = " phoneNumber")]
         public string Phone { get; set; }
         [Required(ErrorMessage = "Password is required")]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
+        public string Password { get; set; }
+
 
         [ForeignKey("Role")]
         public int RoleID { get; set; }
         public int Status { get; set; }
         public int ServicesCount { get; set; }
-        public string Password { get; set; }
        
         public int loginStatus { get; set; }
         public virtual ICollection<AuditTrail> AuditTrails { get; set; }

@@ -41,8 +41,9 @@ namespace API.Controllers
                 }
                 else
                 {
-                    var SignUpUser = _user.SignUp(userSignUp);
-                    return Ok(1);
+                    string SignUpUser = _user.SignUp(userSignUp);
+                  
+                    return Ok(SignUpUser);
                 }
             }
         }
@@ -57,7 +58,7 @@ namespace API.Controllers
             {
                 string newUserStatus;
 
-                User user = new User();
+          
 
 
             newUserStatus = _user.UserStatus(userModelDto);

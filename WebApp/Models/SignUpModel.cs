@@ -14,18 +14,11 @@ namespace WebApp.Models
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email Adress")]
         public string UserName { get; set; }
-        [Required(ErrorMessage = "Your First Name is required")]
-        [DataType(DataType.Text)]
-        [Display(Name = "First Name")]
-        public string FirstName { get; set; }
-        [Required(ErrorMessage = "Your Last Name is required")]
-        [DataType(DataType.Text)]
-        [Display(Name = "Last Name")]
-        public string LastName { get; set; }
+       
         [Required(ErrorMessage = "Your phone number is required")]
         [DataType(DataType.Text)]
         [Display(Name = "phone number")]
-        public string PhoneNumber { get; set; }
+        public string Phone { get; set; }
         [Required(ErrorMessage = "Your password is required")]
         [MinLength(7, ErrorMessage = "Your password must be longer than 6")]
         [DataType(DataType.Password)]

@@ -117,46 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Electrical" xml:space="preserve">
-    <value>Electrical</value>
-  </data>
-  <data name="Electronics" xml:space="preserve">
-    <value>Electronics</value>
-  </data>
-  <data name="Food" xml:space="preserve">
-    <value>Food</value>
-  </data>
-  <data name="Index" xml:space="preserve">
-    <value>Index</value>
-  </data>
-  <data name="LS-Electrical" xml:space="preserve">
-    <value>LS-Electrical</value>
-  </data>
-  <data name="LS-Electronics" xml:space="preserve">
-    <value>LS-Electronics</value>
-  </data>
-  <data name="LS-Food" xml:space="preserve">
-    <value>LS-Food</value>
-  </data>
-  <data name="MS-Electrical" xml:space="preserve">
-    <value>MS-Electrical</value>
-  </data>
-  <data name="MS-Electronics" xml:space="preserve">
-    <value>MS-Electronics</value>
-  </data>
-  <data name="MS-Food" xml:space="preserve">
-    <value>MS-Food</value>
-  </data>
-  <data name="Price is Required" xml:space="preserve">
-    <value>Price is Required</value>
-  </data>
-  <data name="TS-Electrical" xml:space="preserve">
-    <value>TS-Electrical</value>
-  </data>
-  <data name="TS-Electronics" xml:space="preserve">
-    <value>TS-Electronics</value>
-  </data>
-  <data name="TS-Food" xml:space="preserve">
-    <value>TS-Food</value>
-  </data>
 </root>

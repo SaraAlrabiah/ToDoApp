@@ -142,6 +142,13 @@ namespace WebApp.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult WelcomePage()
+        {
+           
+            return View();
+
+        }
 
 
         public IActionResult SignUpView()
@@ -161,9 +168,8 @@ namespace WebApp.Controllers
                 {
                     UserName = userModel.UserName,
                     Password = userModel.Password,
-                    FirstName = userModel.FirstName,
-                    LastName = userModel.LastName,
-                    PhoneNumber = userModel.PhoneNumber,
+                 
+                    Phone = userModel.Phone,
 
 
 
@@ -222,7 +228,6 @@ namespace WebApp.Controllers
 
 
             }
-            ModelState.AddModelError("", "This Email already used");
             return View("SignUpView");
         }
 
@@ -241,7 +246,7 @@ namespace WebApp.Controllers
         {
 
             HttpContext.Session.Clear();
-            return View("LoginView");
+            return RedirectToAction("WelcomePage");
         }
     }
 }
