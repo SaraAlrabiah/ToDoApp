@@ -40,9 +40,9 @@ namespace BusinessLayer.business
                 return 0;
             }
         }
-        public string GetRole(User userModel)
+        public UserInfo GetRole(User userModel)
         {
-            string role = "";
+            UserInfo userInfo = new UserInfo();
             var userObj = _db.Users.Where(x => x.Username.ToLower() == userModel.Username.ToLower()
                 && x.Password == userModel.Password).FirstOrDefault();
 
@@ -51,28 +51,27 @@ namespace BusinessLayer.business
                 var roleObj = _db.Roles.Where(x => x.ID == userObj.RoleID).FirstOrDefault();
                 if (roleObj != null)
                 {
-                    UserInfo userInfo = new UserInfo()
+                    userInfo = new UserInfo()
                     {
                         UserName = userObj.Username,
                         Password = userObj.Password,
                         Role = roleObj.Name
                     };
-                    role = userInfo.Role;
+                   
                 }
                 else
                 {
-                    UserInfo userInfo = new UserInfo()
+               userInfo = new UserInfo()
                     {
                         UserName = userObj.Username,
                         Password = userObj.Password,
                         Role = string.Empty
                     };
-                    role = string.Empty;
                 }
 
 
             }
-            return role;
+            return userInfo;
         }
 
 
@@ -138,6 +137,8 @@ namespace BusinessLayer.business
 
             return status;
         }
+
+        
     }
     }
 

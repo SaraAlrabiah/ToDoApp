@@ -16,8 +16,13 @@ using IHost host = Host.CreateDefaultBuilder(args).Build();
 // Ask the service provider for the configuration abstraction.
 IConfiguration config = host.Services.GetRequiredService<IConfiguration>();
 
+
 // Get values from the config given their key and their target type.
-string BaseUrl = config["BaseUrl"];
+string BaseUrl = config.GetSection("BaseUrl").Value;
+ static string GetBaseUrl(string baseUrl)
+{
+    return baseUrl;
+}
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(double.Parse(config["SessionTimeOutInterval"]));

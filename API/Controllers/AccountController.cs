@@ -1,12 +1,12 @@
 ﻿using ApplicationLayer.Application;
 using DataAccess.Model;
+using DataAccess.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
-  //  [Route("api/[controller]")]
- //   [ApiController]
+
     public class AccountController : ControllerBase
     {
 
@@ -56,13 +56,13 @@ namespace API.Controllers
             }
             else
             {
-                string newUserStatus;
+              
 
           
 
 
-            newUserStatus = _user.UserStatus(userModelDto);
-               string userRole = _user.GetRole(userModelDto);
+           string newUserStatus = _user.UserStatus(userModelDto);
+                UserInfo userRole = _user.GetRole(userModelDto);
                 return Ok(userRole);
             }
 

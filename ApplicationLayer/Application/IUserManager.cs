@@ -1,4 +1,5 @@
 ﻿using DataAccess.Model;
+using DataAccess.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace ApplicationLayer.Application
     {
 
 
-        public string GetRole(User userModel);
+        public UserInfo GetRole(User userModel);
         public string UserStatus(User userModel);
         public string SignUp(User userModel);
 

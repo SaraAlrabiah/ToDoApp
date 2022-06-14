@@ -14,15 +14,12 @@ namespace WebApp.Controllers
       private readonly ITokenService _tokenService;
 
         private string generatedToken = null;
+       
+
 
         string BaseUrl = "https://localhost:7026/api/values/";//API
 
-        //public AccountController(IConfiguration config, ITokenService tokenService)
-        //{
-        //    _configration = config;
-        //    _tokenService = tokenService;
-
-        //}
+ 
         public AccountController(IConfiguration config , ITokenService tokenService)
         {
             _configration = config;
@@ -45,7 +42,7 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-                string role = null;
+                var role = new UserModel();
                var validUser = new UserInfo();
                 var user = new UserModel
                 {
@@ -58,8 +55,9 @@ namespace WebApp.Controllers
                 using (var client = new HttpClient())
                 {
 
+                    string issuer = _configration["BaseUrl"];
 
-                    client.BaseAddress = new Uri(BaseUrl);
+                    client.BaseAddress = new Uri(issuer);
 
                     var request = new HttpRequestMessage(HttpMethod.Post, client.BaseAddress + "GetCurrentUserRole");
                     if (user != null)
@@ -68,19 +66,23 @@ namespace WebApp.Controllers
                             JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
                     }
 
-                    HttpResponseMessage responseMessage = await client.SendAsync(request);
+                    HttpResponseMessage responseMessage = await client.SendAsync(request );
 
                     if (responseMessage.IsSuccessStatusCode)
                     {
-                        role = await responseMessage.Content.ReadAsStringAsync();
-                    
-                        if (role != "")
+                        var clientResponse = responseMessage.Content.ReadAsStringAsync().Result;
+
+                        //Deserializing the response recieved from web api and storing into the Employee list
+                        validUser = JsonConvert.DeserializeObject<UserInfo
+                        >(clientResponse);
+
+                        if (validUser.Role != "")
                         {
 
                             var username = user.UserName;
                             validUser = new UserInfo()
                             {
-                                Role = role,
+                                Role = validUser.Role,
                                 UserName = userModel.UserName,
                                 Password = userModel.Password
                             };
@@ -113,8 +115,6 @@ namespace WebApp.Controllers
         }
 
 
-       // [Authorize(Roles = "Admin , Maintenance Manager  ,Employee,Maintenance Worker, Building Manager ")]
-       // [Route("dashboard")]
         [HttpGet]
         public IActionResult MainPage()
         {

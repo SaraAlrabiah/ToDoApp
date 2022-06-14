@@ -1,15 +1,9 @@
-@font-face
-{
+@font-face {
     font-family: 'boxicons';
     font-weight: normal;
     font-style: normal;
-
-    src: url('../fonts/boxicons.eot');
-    src: url('../fonts/boxicons.eot') format('embedded-opentype'),
-    url('../fonts/boxicons.woff2') format('woff2'),
-    url('../fonts/boxicons.woff') format('woff'),
-    url('../fonts/boxicons.ttf') format('truetype'),
-    url('../fonts/boxicons.svg?#boxicons') format('svg');
+    src: url('/welcomePage/boxicons/fonts/boxicons.eot');
+    src: url('/welcomePage/boxicons/fonts/boxicons.eot') format('embedded-opentype'), url('/welcomePage/boxicons/fonts/boxicons.woff2') format('woff2'), url('../fonts/boxicons.woff') format('woff'), url('../fonts/boxicons.ttf') format('truetype'), url('../fonts/boxicons.svg?#boxicons') format('svg');
 }
 .bx
 {
@@ -442,15 +436,15 @@
 }
 .bx-sm
 {
-    font-size: 1.55rem!important;
+    font-size: 10.55rem!important;
 }
 .bx-md
 {
-    font-size: 2.25rem!important;
+    font-size: 10.25rem!important;
 }
 .bx-lg
 {
-    font-size: 3.0rem!important;
+    font-size: 10.0rem!important;
 }
 .bx-fw
 {
